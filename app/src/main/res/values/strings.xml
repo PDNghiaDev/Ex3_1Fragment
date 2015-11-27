@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Ex3_1Fragment</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone number</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="btn_next">NEXT</string>
+    <string name="txt_salary">Your salary: 32800 dollars</string>
+    <string name="txt_zero">$0</string>
+    <string name="txt_end">$100000</string>
+    <string name="txt_question_sport">Which sport do you like?</string>
+    <string name="football">Football</string>
+    <string name="tennis">Tennis</string>
+    <string name="pingpong">Ping pong</string>
+    <string name="swimming">Swimming</string>
+    <string name="volleyball">Volleyball</string>
+    <string name="basketball">Basketball</string>
+    <string name="btn_done">DONE</string>
+
+    <string name="first_name_error">First name cannot be empty</string>
+    <string name="last_name_error">Last name cannot be empty</string>
+    <string name="email_error">Email cannot be empty</string>
+    <string name="phone_number_error">Phone number cannot be empty</string>
+</resources>
