@@ -7,5 +7,5 @@ import com.gmail.pdnghiadev.ex3_1fragment.untils.OnNextListener;
  */
 public interface SignUpStep1Interactor {
 
-    public void next(String firstname, String lastname, String email, String phonenumber, OnNextListener listener);
+    public void next(String firstname, String lastname, String email, String phonenumber, Boolean gender, OnNextListener listener);
 }

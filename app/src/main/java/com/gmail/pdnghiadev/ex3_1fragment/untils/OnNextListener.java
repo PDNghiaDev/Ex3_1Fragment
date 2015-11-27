@@ -12,5 +12,7 @@ public interface OnNextListener {
 
     public void onPhonenumberError();
 
+    public void onGenderError();
+
     public void onSuccess();
 }

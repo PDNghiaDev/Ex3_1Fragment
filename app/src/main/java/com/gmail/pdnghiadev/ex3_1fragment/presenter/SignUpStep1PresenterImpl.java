@@ -8,18 +8,18 @@ import com.gmail.pdnghiadev.ex3_1fragment.view.SignUpStep1View;
 /**
  * Created by PDNghiaDev on 11/26/2015.
  */
-public class SignUpStep1PresenterImpl implements SignUpStep1Presenter, OnNextListener{
+public class SignUpStep1PresenterImpl implements SignUpStep1Presenter, OnNextListener {
     private SignUpStep1View signUpView;
     private SignUpStep1Interactor signUpInteractor;
 
-    public SignUpStep1PresenterImpl(SignUpStep1View signUpView){
+    public SignUpStep1PresenterImpl(SignUpStep1View signUpView) {
         this.signUpView = signUpView;
         this.signUpInteractor = new SignUpStep1InteractorImpl();
     }
 
     @Override
-    public void validateCredentials(String firstname, String lastname, String email, String phonenumber) {
-        signUpInteractor.next(firstname, lastname, email, phonenumber, this);
+    public void validateCredentials(String firstname, String lastname, String email, String phonenumber, Boolean gender) {
+        signUpInteractor.next(firstname, lastname, email, phonenumber, gender, this);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class SignUpStep1PresenterImpl implements SignUpStep1Presenter, OnNextLis
     @Override
     public void onPhonenumberError() {
         signUpView.setPhonenumberError();
+    }
+
+    @Override
+    public void onGenderError() {
+        signUpView.setGenderError();
     }
 
     @Override

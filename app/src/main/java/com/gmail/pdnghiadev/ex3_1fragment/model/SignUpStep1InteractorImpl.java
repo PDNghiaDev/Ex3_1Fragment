@@ -9,7 +9,7 @@ import com.gmail.pdnghiadev.ex3_1fragment.untils.OnNextListener;
  */
 public class SignUpStep1InteractorImpl implements SignUpStep1Interactor {
     @Override
-    public void next(String firstname, String lastname, String email, String phonenumber, OnNextListener listener) {
+    public void next(String firstname, String lastname, String email, String phonenumber, Boolean gender, OnNextListener listener) {
         boolean error = false;
 
         if (TextUtils.isEmpty(firstname)){
@@ -26,6 +26,10 @@ public class SignUpStep1InteractorImpl implements SignUpStep1Interactor {
         }
         if (TextUtils.isEmpty(phonenumber)){
             listener.onPhonenumberError();
+            error = true;
+        }
+        if (gender){
+            listener.onGenderError();
             error = true;
         }
         if (!error){

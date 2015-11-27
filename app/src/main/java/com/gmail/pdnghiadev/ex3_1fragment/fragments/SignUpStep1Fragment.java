@@ -4,13 +4,14 @@ package com.gmail.pdnghiadev.ex3_1fragment.fragments;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.gmail.pdnghiadev.ex3_1fragment.R;
 import com.gmail.pdnghiadev.ex3_1fragment.presenter.SignUpStep1Presenter;
@@ -20,7 +21,7 @@ import com.gmail.pdnghiadev.ex3_1fragment.view.SignUpStep1View;
 /**
  * Created by PDNghiaDev on 11/25/2015.
  */
-public class SignUpStep1Fragment extends Fragment implements View.OnClickListener, SignUpStep1View{
+public class SignUpStep1Fragment extends Fragment implements View.OnClickListener, SignUpStep1View {
     public static final String TAG = "SignUpStep1Fragment";
     private Button mBtnNext;
     private EditText mFirstname, mLastname, mEmail, mPhonenumber;
@@ -46,7 +47,7 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
         return view;
     }
 
-    public void loadComponents(View view){
+    public void loadComponents(View view) {
         mBtnNext = (Button) view.findViewById(R.id.btnNext);
         mFirstname = (EditText) view.findViewById(R.id.editFirstName);
         mLastname = (EditText) view.findViewById(R.id.editLastName);
@@ -62,7 +63,14 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
         mStrLastname = mLastname.getText().toString();
         mStrEmail = mEmail.getText().toString();
         mStrPhonenumber = mPhonenumber.getText().toString();
-        signUpPresenter.validateCredentials(mStrFirstname, mStrLastname, mStrEmail, mStrPhonenumber);
+        signUpPresenter.validateCredentials(mStrFirstname, mStrLastname, mStrEmail, mStrPhonenumber, checkGender());
+    }
+
+    public Boolean checkGender(){
+        if (mGender.getCheckedRadioButtonId() < 0){
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -87,7 +95,7 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
 
     @Override
     public void setGenderError() {
-
+        Toast.makeText(getActivity(), "Please choose gender", Toast.LENGTH_SHORT).show();
     }
 
     @Override

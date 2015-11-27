@@ -7,7 +7,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="btn_next">NEXT</string>
-    <string name="txt_salary">Your salary: 32800 dollars</string>
+    <string name="txt_salary">Your salary: 0 dollar</string>
     <string name="txt_zero">$0</string>
     <string name="txt_end">$100000</string>
     <string name="txt_question_sport">Which sport do you like?</string>
