@@ -28,4 +28,7 @@
     <string name="txt_filling_info">Thank you for filling information. What do you want to do next?</string>
     <string name="btn_send_email">SEND EMAIL</string>
     <string name="btn_restart">RESTART</string>
+    <string name="txt_step1">Step 1</string>
+    <string name="txt_step2">Step 2</string>
+    <string name="txt_step3">Step 3</string>
 </resources>
