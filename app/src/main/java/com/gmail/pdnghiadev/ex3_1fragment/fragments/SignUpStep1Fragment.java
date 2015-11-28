@@ -9,20 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.gmail.pdnghiadev.ex3_1fragment.R;
 import com.gmail.pdnghiadev.ex3_1fragment.presenter.SignUpStep1Presenter;
 import com.gmail.pdnghiadev.ex3_1fragment.presenter.SignUpStep1PresenterImpl;
+import com.gmail.pdnghiadev.ex3_1fragment.untils.CustomDialog;
 import com.gmail.pdnghiadev.ex3_1fragment.view.SignUpStep1View;
 
 /**
  * Created by PDNghiaDev on 11/25/2015.
+ * Class perform 5 functions
+ * 1 - Check for FirstName is empty
+ * 2 - Check for LastName is empty
+ * 3 - Check for Email is empty and invalid
+ * 4 - Check for PhoneNumber is empty and phone's length
+ * 5 - Check for the user have select gender
  */
 public class SignUpStep1Fragment extends Fragment implements View.OnClickListener, SignUpStep1View {
-    public static final String TAG = "SignUpStep1Fragment";
     private Button mBtnNext;
     private EditText mFirstname, mLastname, mEmail, mPhonenumber;
     private String mStrFirstname, mStrLastname, mStrEmail, mStrPhonenumber;
@@ -66,11 +70,8 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
         signUpPresenter.validateCredentials(mStrFirstname, mStrLastname, mStrEmail, mStrPhonenumber, checkGender());
     }
 
-    public Boolean checkGender(){
-        if (mGender.getCheckedRadioButtonId() < 0){
-            return true;
-        }
-        return false;
+    public Boolean checkGender(){ // Check for Gender
+        return mGender.getCheckedRadioButtonId() < 0;
     }
 
     @Override
@@ -89,19 +90,36 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
     }
 
     @Override
+    public void setEmailInvalidError() {
+        mEmail.setError(getString(R.string.email_invalid_error));
+    }
+
+    @Override
     public void setPhonenumberError() {
         mPhonenumber.setError(getString(R.string.phone_number_error));
     }
 
     @Override
+    public void setPhonenumberInvalidError() {
+        mPhonenumber.setError(getString(R.string.phone_number_invalid_error));
+    }
+
+    @Override
     public void setGenderError() {
-        Toast.makeText(getActivity(), "Please choose gender", Toast.LENGTH_SHORT).show();
+        CustomDialog dialog = new CustomDialog("Please choose your gender");
+        dialog.show(getFragmentManager(), "SignUpStep1");
     }
 
     @Override
     public void navigationToStep2() {
         SignUpStep2Fragment fragment = new SignUpStep2Fragment();
+        Bundle bundle = new Bundle();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
+        bundle.putString("first_name", mStrFirstname);
+        bundle.putString("last_name", mStrLastname);
+        bundle.putString("email", mStrEmail);
+        bundle.putString("phone_number", mStrPhonenumber);
+        fragment.setArguments(bundle);
         ft.replace(R.id.signUp, fragment);
         ft.addToBackStack(null);
         ft.commit();

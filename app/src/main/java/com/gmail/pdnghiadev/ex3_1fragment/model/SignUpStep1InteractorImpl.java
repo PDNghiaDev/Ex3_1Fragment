@@ -1,6 +1,7 @@
 package com.gmail.pdnghiadev.ex3_1fragment.model;
 
 import android.text.TextUtils;
+import android.util.Patterns;
 
 import com.gmail.pdnghiadev.ex3_1fragment.untils.OnNextListener;
 
@@ -24,8 +25,16 @@ public class SignUpStep1InteractorImpl implements SignUpStep1Interactor {
             listener.onEmailError();
             error = true;
         }
+        if (!isEmailValid(email)){
+            listener.onEmailInvalidError();
+            error = true;
+        }
         if (TextUtils.isEmpty(phonenumber)){
             listener.onPhonenumberError();
+            error = true;
+        }
+        if (isPhonenumberValid(phonenumber)){
+            listener.onPhonenumberInvalidError();
             error = true;
         }
         if (gender){
@@ -34,6 +43,18 @@ public class SignUpStep1InteractorImpl implements SignUpStep1Interactor {
         }
         if (!error){
             listener.onSuccess();
+        }
+    }
+
+    public Boolean isEmailValid(String email){
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public Boolean isPhonenumberValid(String phone){
+        if (phone.length() == 10 || phone.length() == 11){
+            return false;
+        }else {
+            return true;
         }
     }
 }

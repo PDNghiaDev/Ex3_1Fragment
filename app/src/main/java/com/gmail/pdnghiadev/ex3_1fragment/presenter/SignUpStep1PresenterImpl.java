@@ -38,8 +38,18 @@ public class SignUpStep1PresenterImpl implements SignUpStep1Presenter, OnNextLis
     }
 
     @Override
+    public void onEmailInvalidError() {
+        signUpView.setEmailInvalidError();
+    }
+
+    @Override
     public void onPhonenumberError() {
         signUpView.setPhonenumberError();
+    }
+
+    @Override
+    public void onPhonenumberInvalidError() {
+        signUpView.setPhonenumberInvalidError();
     }
 
     @Override

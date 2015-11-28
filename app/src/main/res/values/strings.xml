@@ -19,8 +19,13 @@
     <string name="basketball">Basketball</string>
     <string name="btn_done">DONE</string>
 
-    <string name="first_name_error">First name cannot be empty</string>
-    <string name="last_name_error">Last name cannot be empty</string>
-    <string name="email_error">Email cannot be empty</string>
-    <string name="phone_number_error">Phone number cannot be empty</string>
+    <string name="first_name_error">You must enter first name</string>
+    <string name="last_name_error">You must enter last name</string>
+    <string name="email_error">You must enter email</string>
+    <string name="email_invalid_error">Email is invalid</string>
+    <string name="phone_number_error">You must enter phone number</string>
+    <string name="phone_number_invalid_error">Phone number is invalid</string>
+    <string name="txt_filling_info">Thank you for filling information. What do you want to do next?</string>
+    <string name="btn_send_email">SEND EMAIL</string>
+    <string name="btn_restart">RESTART</string>
 </resources>

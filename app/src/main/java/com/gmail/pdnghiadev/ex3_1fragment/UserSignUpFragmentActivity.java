@@ -18,12 +18,10 @@ public class UserSignUpFragmentActivity extends AppCompatActivity {
         SignUpStep1Fragment fragment = new SignUpStep1Fragment();
         fragmentTransaction.add(R.id.signUp, fragment);
         fragmentTransaction.commit();
-
-
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { //Back button
         getFragmentManager().popBackStack();
     }
 }

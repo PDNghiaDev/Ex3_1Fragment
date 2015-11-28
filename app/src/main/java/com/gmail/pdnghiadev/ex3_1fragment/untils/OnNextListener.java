@@ -10,9 +10,15 @@ public interface OnNextListener {
 
     public void onEmailError();
 
+    public void onEmailInvalidError();
+
     public void onPhonenumberError();
+
+    public void onPhonenumberInvalidError();
 
     public void onGenderError();
 
     public void onSuccess();
+
+
 }

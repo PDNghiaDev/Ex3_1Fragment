@@ -11,7 +11,11 @@ public interface SignUpStep1View {
 
     public void setEmailError();
 
+    public void setEmailInvalidError();
+
     public void setPhonenumberError();
+
+    public void setPhonenumberInvalidError();
 
     public void setGenderError();
 
