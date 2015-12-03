@@ -1,8 +1,8 @@
 package com.gmail.pdnghiadev.ex3_1fragment.fragments;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.gmail.pdnghiadev.ex3_1fragment.R;
 import com.gmail.pdnghiadev.ex3_1fragment.untils.CustomDialog;
+import com.gmail.pdnghiadev.ex3_1fragment.untils.UserInfoConstant;
 
 /**
  * Created by PDNghiaDev on 11/25/2015.
@@ -54,33 +55,33 @@ public class SignUpStep2Fragment extends Fragment implements SeekBar.OnSeekBarCh
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        salary = progress;
-        mCountSalary.setText("Your salary: " + salary + "00 dollars");
+        salary = progress * 100;
+        mCountSalary.setText("Your salary: " + salary + " dollars");
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        mCountSalary.setText("Your salary: " + salary + "00 dollars");
+        mCountSalary.setText("Your salary: " + salary + " dollars");
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        mCountSalary.setText("Your salary: " + salary + "00 dollars");
+        mCountSalary.setText("Your salary: " + salary + " dollars");
     }
 
     @Override
     public void onClick(View v) {
         if (!getHobbies()){
             CustomDialog dialog = new CustomDialog("Please choose the sport that you like");
-            dialog.show(getFragmentManager(), "SignUpStep2");
+            dialog.show(getFragmentManager(), UserInfoConstant.SIGNUP_STEP2);
         }else {
             SignUpStep3Fragment fragment = new SignUpStep3Fragment();
             Bundle bundle = getArguments();
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            bundle.putInt("salary", salary);
+            bundle.putInt(UserInfoConstant.SALARY, salary);
             fragment.setArguments(bundle);
             ft.replace(R.id.signUp, fragment);
-            ft.addToBackStack(null);
+            ft.addToBackStack(UserInfoConstant.SIGNUP_STEP3);
             ft.commit();
         }
     }

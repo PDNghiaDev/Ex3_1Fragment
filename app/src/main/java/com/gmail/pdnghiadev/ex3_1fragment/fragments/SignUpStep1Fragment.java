@@ -1,9 +1,11 @@
 package com.gmail.pdnghiadev.ex3_1fragment.fragments;
 
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.gmail.pdnghiadev.ex3_1fragment.R;
 import com.gmail.pdnghiadev.ex3_1fragment.presenter.SignUpStep1Presenter;
 import com.gmail.pdnghiadev.ex3_1fragment.presenter.SignUpStep1PresenterImpl;
 import com.gmail.pdnghiadev.ex3_1fragment.untils.CustomDialog;
+import com.gmail.pdnghiadev.ex3_1fragment.untils.UserInfoConstant;
 import com.gmail.pdnghiadev.ex3_1fragment.view.SignUpStep1View;
 
 /**
@@ -107,7 +110,7 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
     @Override
     public void setGenderError() {
         CustomDialog dialog = new CustomDialog("Please choose your gender");
-        dialog.show(getFragmentManager(), "SignUpStep1");
+        dialog.show(getFragmentManager(), UserInfoConstant.SIGNUP_STEP1);
     }
 
     @Override
@@ -115,13 +118,13 @@ public class SignUpStep1Fragment extends Fragment implements View.OnClickListene
         SignUpStep2Fragment fragment = new SignUpStep2Fragment();
         Bundle bundle = new Bundle();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        bundle.putString("first_name", mStrFirstname);
-        bundle.putString("last_name", mStrLastname);
-        bundle.putString("email", mStrEmail);
-        bundle.putString("phone_number", mStrPhonenumber);
+        bundle.putString(UserInfoConstant.FIRST_NAME, mStrFirstname);
+        bundle.putString(UserInfoConstant.LAST_NAME, mStrLastname);
+        bundle.putString(UserInfoConstant.EMAIL, mStrEmail);
+        bundle.putString(UserInfoConstant.PHONE_NUMBER, mStrPhonenumber);
         fragment.setArguments(bundle);
         ft.replace(R.id.signUp, fragment);
-        ft.addToBackStack(null);
+        ft.addToBackStack(UserInfoConstant.SIGNUP_STEP2);
         ft.commit();
     }
 }
